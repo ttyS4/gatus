@@ -44,6 +44,7 @@ func CreateExternalEndpointResult(cfg *config.Config) fiber.Handler {
 		result := &endpoint.Result{
 			Timestamp: time.Now(),
 			Success:   c.QueryBool("success"),
+			Color:     c.Query("color"),
 			Errors:    []string{},
 		}
 		convertedEndpoint := externalEndpoint.ToEndpoint()

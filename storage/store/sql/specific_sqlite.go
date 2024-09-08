@@ -28,6 +28,7 @@ func (s *Store) createSQLiteSchema() error {
 		CREATE TABLE IF NOT EXISTS endpoint_results (
 			endpoint_result_id     INTEGER PRIMARY KEY,
 			endpoint_id            INTEGER   NOT NULL REFERENCES endpoints(endpoint_id) ON DELETE CASCADE,
+			color                  TEXT      NOT NULL,
 			success                INTEGER   NOT NULL,
 			errors                 TEXT      NOT NULL,
 			connected              INTEGER   NOT NULL,

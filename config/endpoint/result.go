@@ -19,6 +19,7 @@ type Result struct {
 
 	// IP resolved from the Endpoint URL
 	IP string `json:"-"`
+	Color string `json:"color"`
 
 	// Connected whether a connection to the host was established successfully
 	Connected bool `json:"-"`
