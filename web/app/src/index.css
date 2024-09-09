@@ -2,8 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-.bg-success {
+.bg-green, .bg-success {
     background-color: #28a745;
+}
+
+.bg-yellow {
+    background-color: yellow;
+}
+
+.bg-blue {
+    background-color: blue;
+}
+
+.bg-grey {
+    background-color: grey;
 }
 
 html {
