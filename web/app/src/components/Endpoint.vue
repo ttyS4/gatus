@@ -28,7 +28,9 @@
             <span v-for="filler in maximumNumberOfResults - data.results.length" :key="filler" class="status rounded border border-dashed border-gray-400">&nbsp;</span>
           </slot>
           <slot v-for="result in data.results" :key="result">
-            <span v-if="result.success" class="status status-success rounded bg-success" @mouseenter="showTooltip(result, $event)" @mouseleave="showTooltip(null, $event)"></span>
+            <!-- <span>{{ result.color }}</span> -->
+            <span v-if="result.color" :class="`status bg-${result.color} rounded`" @mouseenter="showTooltip(result, $event)" @mouseleave="showTooltip(null, $event)"></span>
+            <span v-else-if="result.success" class="status status-success rounded bg-success" @mouseenter="showTooltip(result, $event)" @mouseleave="showTooltip(null, $event)"></span>
             <span v-else class="status status-failure rounded bg-red-600" @mouseenter="showTooltip(result, $event)" @mouseleave="showTooltip(null, $event)"></span>
           </slot>
         </slot>
