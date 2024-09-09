@@ -40,6 +40,12 @@ func CreateExternalEndpointResult(cfg *config.Config) fiber.Handler {
 			log.Printf("[api.CreateExternalEndpointResult] Invalid token for external endpoint with key=%s", key)
 			return c.Status(401).SendString("invalid token")
 		}
+
+		duration, err := time.ParseDuration(c.Query("duration"))
+		if err != nil {
+			log.Printf("[api.CreateExternalEndpointResult] Cannot parse duration err=%s", err)
+			return c.Status(400).SendString("cannot parse duration")
+		}
 		// Persist the result in the storage
 		result := &endpoint.Result{
 			Timestamp: time.Now(),
