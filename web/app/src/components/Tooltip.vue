@@ -4,7 +4,7 @@
       <div class="tooltip-title">Timestamp:</div>
       <code id="tooltip-timestamp">{{ prettifyTimestamp(result.timestamp) }}</code>
       <div class="tooltip-title">Response time:</div>
-      <code id="tooltip-response-time">{{ (result.duration / 1000000).toFixed(0) }}ms</code>
+      <code id="tooltip-response-time">{{ prettifyTimeDuration(result.duration / 1000000) }}</code>
       <slot v-if="result.conditionResults && result.conditionResults.length">
         <div class="tooltip-title">Conditions:</div>
         <code id="tooltip-conditions">

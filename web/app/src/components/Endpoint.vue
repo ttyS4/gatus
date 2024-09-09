@@ -10,10 +10,10 @@
       <div class='w-1/4 text-right'>
         <span class='font-light overflow-x-hidden cursor-pointer select-none hover:text-gray-500' v-if="data.results && data.results.length" @click="toggleShowAverageResponseTime" :title="showAverageResponseTime ? 'Average response time' : 'Minimum and maximum response time'">
           <slot v-if="showAverageResponseTime">
-            ~{{ averageResponseTime }}ms
+            ~{{ prettifyTimeDuration(averageResponseTime) }}
           </slot>
           <slot v-else>
-            {{ (minResponseTime === maxResponseTime ? minResponseTime : (minResponseTime + '-' + maxResponseTime)) }}ms
+            {{ (minResponseTime === maxResponseTime ? prettifyTimeDuration(minResponseTime) : (prettifyTimeDuration(minResponseTime) + '-' + prettifyTimeDuration(maxResponseTime))) }}
           </slot>
         </span>
 <!--        <span class="text-sm font-bold cursor-pointer">-->

@@ -20,6 +20,26 @@ export const helper = {
       let seconds = (differenceInMs / 1000).toFixed(0);
       return seconds + " second" + (seconds !== "1" ? "s" : "") + " ago";
     },
+    prettifyTimeDuration(d) {
+      if (d > 3 * 86400000) { // If it was more than 3 days ago, we'll display the number of days ago
+        let days = (d / 86400000).toFixed(1);
+        return days + " days";
+      }
+      if (d > 3600000) { // If it was more than 1h ago, display the number of hours ago
+        let hours = (d / 3600000).toFixed(1);
+        return hours + " hours";
+      }
+      if (d > 60000) {
+        let minutes = (d / 60000).toFixed(0);
+        return minutes + " minutes";
+      }
+      if (d > 5000) {
+        let seconds = (d / 1000).toFixed(0);
+        return seconds + " seconds";
+      }
+      let ms = d.toFixed(0);
+      return ms + " ms";
+    },
     generatePrettyTimeDifference(start, end) {
       let minutes = Math.ceil((new Date(start) - new Date(end)) / 1000 / 60);
       return minutes + (minutes === 1 ? ' minute' : ' minutes');
